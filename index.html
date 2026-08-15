@@ -255,6 +255,18 @@
   let history  = [];
   let thinking = false;
 
+  // Basic UI deterrents — cosmetic only, does not actually secure anything.
+  // Anyone can still view this file's source via the public GitHub repo,
+  // the browser's menu-based dev tools, or a plain curl request.
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12') { e.preventDefault(); return; }
+    const k = e.key ? e.key.toUpperCase() : '';
+    if (e.ctrlKey && e.shiftKey && (k === 'I' || k === 'J' || k === 'C')) { e.preventDefault(); return; }
+    if (e.ctrlKey && k === 'U') { e.preventDefault(); return; }
+  });
+
   // Theme toggle
   function toggleTheme(){
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
