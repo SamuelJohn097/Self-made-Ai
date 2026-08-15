@@ -1,1 +1,1 @@
-# =Self Made Ai
+# Self Made Ai
